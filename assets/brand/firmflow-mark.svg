@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">FirmFlow brand mark</title>
+  <desc id="desc">Rounded-square icon with an FF monogram suggesting structured workflow.</desc>
+  <defs>
+    <linearGradient id="ff-bg" x1="188" y1="124" x2="836" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E293B" />
+      <stop offset="1" stop-color="#0F172A" />
+    </linearGradient>
+  </defs>
+  <rect x="64" y="64" width="896" height="896" rx="220" fill="url(#ff-bg)" />
+  <rect x="64" y="64" width="896" height="896" rx="220" fill="none" stroke="#334155" stroke-width="20" />
+
+  <rect x="258" y="248" width="84" height="528" rx="28" fill="#FFFFFF" />
+  <rect x="258" y="248" width="330" height="84" rx="28" fill="#FFFFFF" />
+  <rect x="258" y="472" width="276" height="84" rx="28" fill="#FFFFFF" />
+
+  <rect x="604" y="248" width="84" height="528" rx="28" fill="#93C5FD" />
+  <rect x="520" y="248" width="168" height="84" rx="28" fill="#93C5FD" />
+  <rect x="562" y="472" width="126" height="84" rx="28" fill="#93C5FD" />
+</svg>
