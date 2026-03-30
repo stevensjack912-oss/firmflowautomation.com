@@ -118,7 +118,7 @@
             <div style="font-size:.82rem;color:var(--gray-500);margin-top:2px">Data transmitted</div>
           </div>
           <div style="text-align:center">
-            <div style="font-size:1.4rem;font-weight:800;color:var(--navy)">v1.0</div>
+            <div id="latest-release-version" style="font-size:1.4rem;font-weight:800;color:var(--navy)">v--</div>
             <div style="font-size:.82rem;color:var(--gray-500);margin-top:2px">Latest release</div>
           </div>
         </div>
@@ -195,13 +195,22 @@
   <script src="main.js"></script>
   <script>
     (function () {
-      const MAC_URL = 'https://github.com/stevensjack912-oss/automation.tool/releases/download/v1.0.0/FirmFlow-1.0.0-arm64.dmg';
-      const WIN_URL = 'https://github.com/stevensjack912-oss/automation.tool/releases/download/v1.0.0/FirmFlow-1.0.0-x64.exe';
+      const DOWNLOAD_BASE = 'https://app.firmflowautomation.com/desktop-updates';
+      const MAC_URL = `${DOWNLOAD_BASE}/FirmFlow-mac-arm64.dmg`;
+      const WIN_URL = `${DOWNLOAD_BASE}/FirmFlow-win-x64.exe`;
+      const MAC_MANIFEST_URL = `${DOWNLOAD_BASE}/latest-mac.yml`;
+      const WIN_MANIFEST_URL = `${DOWNLOAD_BASE}/latest.yml`;
       const API_URL = 'https://api.firmflowautomation.com/validate';
 
       const input     = document.getElementById('license-key');
       const verifyBtn = document.getElementById('verify-btn');
       const result    = document.getElementById('license-result');
+      const latestReleaseVersion = document.getElementById('latest-release-version');
+      const versions = {
+        mac: 'latest',
+        windows: 'latest',
+        overall: 'latest'
+      };
 
       function setLoading(loading) {
         if (loading) {
@@ -232,7 +241,7 @@
                   </div>
                   <div class="download-btn-text">
                     <strong>Download for Mac</strong>
-                    <span>macOS 12+ · Apple Silicon · v1.0.0</span>
+                    <span>macOS 12+ · Apple Silicon · v${escapeHtml(versions.mac || versions.overall)}</span>
                   </div>
                 </a>
                 <a href="${WIN_URL}" class="download-btn" download>
@@ -243,7 +252,7 @@
                   </div>
                   <div class="download-btn-text">
                     <strong>Download for Windows</strong>
-                    <span>Windows 10/11 · 64-bit · v1.0.0</span>
+                    <span>Windows 10/11 · 64-bit · v${escapeHtml(versions.windows || versions.overall)}</span>
                   </div>
                 </a>
               </div>
@@ -271,6 +280,38 @@
           .replace(/</g, '&lt;')
           .replace(/>/g, '&gt;')
           .replace(/"/g, '&quot;');
+      }
+
+      function parseVersionFromManifest(manifestText) {
+        const match = manifestText.match(/^\s*version:\s*['"]?([0-9A-Za-z.\-_]+)['"]?\s*$/m);
+        return match ? match[1] : null;
+      }
+
+      async function fetchManifestVersion(url) {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) return null;
+          const raw = await res.text();
+          return parseVersionFromManifest(raw);
+        } catch (_) {
+          return null;
+        }
+      }
+
+      function renderLatestReleaseBadge() {
+        if (!latestReleaseVersion) return;
+        latestReleaseVersion.textContent = `v${versions.overall}`;
+      }
+
+      async function loadLatestVersions() {
+        const [macVersion, winVersion] = await Promise.all([
+          fetchManifestVersion(MAC_MANIFEST_URL),
+          fetchManifestVersion(WIN_MANIFEST_URL)
+        ]);
+        if (macVersion) versions.mac = macVersion;
+        if (winVersion) versions.windows = winVersion;
+        versions.overall = winVersion || macVersion || versions.overall;
+        renderLatestReleaseBadge();
       }
 
       async function verify() {
@@ -323,6 +364,9 @@
         input.classList.remove('error');
         if (result.innerHTML) result.innerHTML = '';
       });
+
+      renderLatestReleaseBadge();
+      loadLatestVersions();
     })();
   </script>
 </body>
