@@ -16,6 +16,44 @@
       "Local forms and cover documents may differ across supported venues.",
       "Firms should verify current court and local filing requirements before submission."
     ],
+    "stages": [
+      {
+        "title": "1. Intake normalization",
+        "body": "Many firms begin by consolidating party details, surrogate information, and matter-specific notes into one intake source before touching the packet."
+      },
+      {
+        "title": "2. Form selection",
+        "body": "Once the matter is framed, legal staff often identify the statewide forms commonly used for that filing and determine what still needs attorney review."
+      },
+      {
+        "title": "3. County layer review",
+        "body": "After the core packet is outlined, teams commonly verify whether local forms, cover documents, or county-specific materials need to be added."
+      },
+      {
+        "title": "4. Assembly and quality control",
+        "body": "The final workflow stage often focuses on packet order, consistency across forms, and whether the filing set is ready for submission."
+      }
+    ],
+    "handoff_points": [
+      {
+        "title": "Attorney to paralegal",
+        "body": "A clear workflow reduces uncertainty about which documents are settled and which still depend on legal judgment."
+      },
+      {
+        "title": "Paralegal to assistant",
+        "body": "An assembly-ready workflow helps support staff understand what belongs in the final packet and what still needs verification."
+      }
+    ],
+    "review_risks": [
+      {
+        "title": "Packet drift",
+        "body": "Without a structured workflow, different versions of the packet can diverge as multiple staff members work on the matter."
+      },
+      {
+        "title": "Late county surprises",
+        "body": "Teams often run into delays when county-specific materials are not reviewed until the end and then require changes to the full filing set."
+      }
+    ],
     "faq_items": [
       {
         "question": "Why describe the workflow instead of listing definitive filing steps?",

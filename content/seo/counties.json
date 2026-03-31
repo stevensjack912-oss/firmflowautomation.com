@@ -12,6 +12,36 @@
       "Local form usage may vary by matter type, filing method, and current court expectations.",
       "Firms should verify current Orange County Superior Court filing requirements before submission."
     ],
+    "page_angle": "County pages work best when they help legal staff think in terms of packet structure and review checkpoints rather than trying to publish a universal county checklist.",
+    "common_packet_components": [
+      {
+        "title": "Statewide parentage forms",
+        "body": "Teams commonly start with the statewide forms that anchor the packet and then layer in county-specific documents only after confirming current expectations."
+      },
+      {
+        "title": "Local filing materials",
+        "body": "Orange County matters may involve local forms or filing documents that are tracked separately from the statewide packet."
+      },
+      {
+        "title": "Final packet assembly",
+        "body": "Many firms use a final assembly pass to confirm signatures, ordering, and whether the packet matches the current filing method."
+      }
+    ],
+    "variation_points": [
+      {
+        "title": "Local document mix",
+        "body": "The mix of statewide and local documents may vary by matter and by what the court is currently expecting."
+      },
+      {
+        "title": "Internal review workflow",
+        "body": "Some firms review county-specific materials early, while others prepare the statewide packet first and confirm local requirements before final assembly."
+      }
+    ],
+    "team_roles": [
+      "Paralegals often use county pages to confirm which local documents should be reviewed before assembly.",
+      "Attorneys may use the county overview as a final verification aid rather than a primary drafting reference.",
+      "Legal assistants often benefit from a clear county-specific packet map when preparing filing-ready materials."
+    ],
     "faq_items": [
       {
         "question": "Does this page list every form that might be used in Orange County?",
@@ -42,10 +72,40 @@
       "Form sets and filing expectations may vary by case posture and current local practice.",
       "Firms should verify current Los Angeles County filing requirements before filing."
     ],
+    "page_angle": "Los Angeles County pages are most useful when they explain how teams organize packet planning in a high-volume venue, not when they try to freeze county practice into one fixed checklist.",
+    "common_packet_components": [
+      {
+        "title": "Core statewide forms",
+        "body": "Teams often organize Los Angeles County matters around the main statewide forms used in parentage workflows before layering in venue-specific materials."
+      },
+      {
+        "title": "County-specific materials",
+        "body": "Local forms or filing support documents may be reviewed as a separate county layer so staff can verify them close to filing."
+      },
+      {
+        "title": "Quality-control pass",
+        "body": "In busier workflows, firms often reserve a final pass for packet order, county-specific inclusions, and filing-readiness checks."
+      }
+    ],
+    "variation_points": [
+      {
+        "title": "Matter posture",
+        "body": "The packet can change depending on the facts of the matter and how the firm stages its review process."
+      },
+      {
+        "title": "Current local practice",
+        "body": "County expectations can shift over time, which is why teams often verify local documents near the end of packet preparation."
+      }
+    ],
+    "team_roles": [
+      "Attorneys often want a concise county overview that helps them review packet logic without rereading every form instruction.",
+      "Paralegals frequently use county workflow pages to coordinate statewide forms with county-specific materials.",
+      "Legal assistants can use the county page as an assembly map when preparing the final filing set."
+    ],
     "faq_items": [
       {
-        "question": "Why combine county and form guidance on one page?",
-        "answer": "County-plus-form pages can help legal teams quickly understand where a specific form may fit into a broader filing workflow while still reminding readers that local requirements should be verified."
+        "question": "Why pair county workflow context with legal-tech content?",
+        "answer": "Because many searchers are not asking for a software product first. They are trying to understand how a county workflow is commonly organized and whether a tool can support that process."
       },
       {
         "question": "Does county support mean every filing scenario is identical?",

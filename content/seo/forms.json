@@ -1,7 +1,7 @@
 [
   {
     "id": "fl-235",
-    "form_name": "Stipulation for Judgment",
+    "form_name": "ADVISEMENT AND WAIVER OF RIGHTS RE: DETERMINATION OF PARENTAL RELATIONSHIP",
     "form_number": "FL-235",
     "form_slug": "fl-235",
     "keyword": "FL-235 surrogacy workflow",
@@ -12,6 +12,32 @@
     "county_notes": [
       "Whether FL-235 is included in a specific packet may vary by county and matter.",
       "Teams often benefit from a standardized internal checklist showing how FL-235 relates to nearby forms in the workflow."
+    ],
+    "definition": "FL-235 is best understood as a form-specific workflow touchpoint rather than as a complete filing strategy on its own. For many teams, the operational question is where FL-235 belongs in review and assembly, not just what the form is called.",
+    "operational_role": "When a firm uses FL-235, it is often easier to manage if the form is tied to a clearly defined review stage with adjacent documents and responsibility checkpoints.",
+    "review_checkpoints": [
+      {
+        "title": "Form selection",
+        "body": "Teams often first ask whether FL-235 belongs in the matter at all, since form usage may vary by county and filing context."
+      },
+      {
+        "title": "Adjacent document review",
+        "body": "If FL-235 is included, many firms review it together with the nearby parentage forms that shape the rest of the packet."
+      },
+      {
+        "title": "Final packet consistency",
+        "body": "A later quality-control step can confirm that FL-235, if used, matches the rest of the filing set and any local requirements being tracked."
+      }
+    ],
+    "adjacent_forms": [
+      {
+        "title": "FL-200",
+        "body": "Teams often think about FL-235 in relation to the broader petition and supporting-form structure rather than in isolation."
+      },
+      {
+        "title": "County-specific materials",
+        "body": "Some firms maintain a separate review layer for local forms so they can understand how statewide forms connect to county-specific packet requirements."
+      }
     ],
     "faq_items": [
       {
@@ -43,6 +69,32 @@
     "county_notes": [
       "FL-200 is often reviewed together with supporting forms and any county-specific filing materials.",
       "The surrounding packet may vary by county and by the facts of the matter."
+    ],
+    "definition": "FL-200 often functions as one of the forms that shapes the rest of the packet around it. For workflow planning, legal teams usually care less about the label alone and more about how FL-200 affects adjacent documents and review order.",
+    "operational_role": "In practice, FL-200 often acts like a packet anchor: once staff know how the matter is being framed, they can better organize the supporting forms, local materials, and final review sequence around it.",
+    "review_checkpoints": [
+      {
+        "title": "Matter framing",
+        "body": "Teams often confirm how FL-200 fits into the filing strategy before they prepare the surrounding packet."
+      },
+      {
+        "title": "Supporting-form alignment",
+        "body": "FL-200 is commonly reviewed with adjacent forms so the packet reads as one coordinated filing set."
+      },
+      {
+        "title": "County-aware verification",
+        "body": "Before filing, firms often verify how FL-200 relates to any local forms or county-specific materials being tracked."
+      }
+    ],
+    "adjacent_forms": [
+      {
+        "title": "FL-235",
+        "body": "Form-specific review is often easier when the team can see how FL-200 relates to other parentage documents that may travel with it."
+      },
+      {
+        "title": "Local filing documents",
+        "body": "County-specific documents are often reviewed as a separate layer so the team can distinguish statewide packet logic from local filing logistics."
+      }
     ],
     "faq_items": [
       {
