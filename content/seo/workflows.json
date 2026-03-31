@@ -1,0 +1,38 @@
+[
+  {
+    "id": "california-parentage-order-workflow",
+    "slug": "california-parentage-order-workflow",
+    "keyword": "California parentage order workflow",
+    "search_intent": "workflow explainer",
+    "title": "California Parentage Order Workflow | FirmFlow Automation",
+    "meta_title": "California Parentage Order Workflow for Surrogacy Law Firms | FirmFlow",
+    "meta_description": "A careful workflow overview of how California parentage order packet preparation is commonly organized for surrogacy law firms.",
+    "h1": "California Parentage Order Workflow",
+    "short_answer": "A California parentage order workflow usually involves collecting intake data, identifying the forms commonly used for the matter, assembling any local documents that may be required, and reviewing the full packet before filing. Exact filing requirements may vary by county.",
+    "intro_summary": "For surrogacy law firms, parentage order packet preparation is often less about one form and more about the full sequence of intake, form selection, packet assembly, and review. A workflow-driven process can reduce manual re-entry and make county-specific review easier.",
+    "workflow_context": "Many firms organize parentage order work into repeatable stages: intake review, statewide form preparation, local form handling, packet assembly, and final quality control. A structured workflow helps legal staff understand what is commonly prepared and what still needs matter-specific verification.",
+    "county_notes": [
+      "Workflow details may vary by county and by filing context.",
+      "Local forms and cover documents may differ across supported venues.",
+      "Firms should verify current court and local filing requirements before submission."
+    ],
+    "faq_items": [
+      {
+        "question": "Why describe the workflow instead of listing definitive filing steps?",
+        "answer": "Workflow pages are meant to support planning and internal consistency, not replace legal review. County and case-specific requirements may vary, so a cautious workflow overview is more reliable than a universal filing checklist."
+      },
+      {
+        "question": "Who benefits most from a parentage order workflow page?",
+        "answer": "Attorneys, paralegals, and legal assistants who want a structured view of how packet preparation is commonly organized can use workflow pages as a practical reference."
+      }
+    ],
+    "related_forms": [
+      "fl-235",
+      "fl-200"
+    ],
+    "related_counties": [
+      "orange-county",
+      "los-angeles-county"
+    ]
+  }
+]

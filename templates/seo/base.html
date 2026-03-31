@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ${head_meta}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="${css_path}" />
+  <link rel="icon" type="image/x-icon" href="${favicon_ico}" />
+  <link rel="shortcut icon" href="${favicon_ico}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="${favicon_32}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="${favicon_16}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="${apple_icon}" />
+  <link rel="manifest" href="${manifest_path}" />
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="${root_path}index.html" class="logo" aria-label="FirmFlow Automation Home">
+          <div class="logo-mark" aria-hidden="true">
+            <img class="logo-image" src="${logo_path}" alt="" />
+          </div>
+          <span class="logo-text">FirmFlow <span>Automation</span></span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="${root_path}index.html" class="nav-link">Home</a>
+          <a href="${root_path}product.html" class="nav-link">Products</a>
+          <a href="${root_path}pricing.html" class="nav-link">Pricing</a>
+          <a href="${root_path}download.html" class="nav-link">Download</a>
+          <a href="${root_path}faq.html" class="nav-link">FAQ</a>
+          <a href="${root_path}contact.html" class="btn btn-primary btn-sm nav-cta">Get in Touch</a>
+        </nav>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="${root_path}index.html" class="nav-link">Home</a>
+      <a href="${root_path}product.html" class="nav-link">Products</a>
+      <a href="${root_path}pricing.html" class="nav-link">Pricing</a>
+      <a href="${root_path}download.html" class="nav-link">Download</a>
+      <a href="${root_path}faq.html" class="nav-link">FAQ</a>
+      <a href="${root_path}contact.html" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero seo-page-hero" aria-label="${hero_aria}">
+      <div class="container">
+        <div class="page-hero-content">
+          <span class="hero-label hero-anim-1" style="margin-bottom:16px">${hero_label}</span>
+          <h1 class="hero-anim-2">${h1}</h1>
+          <p class="hero-anim-3">${hero_intro}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section seo-section">
+      <div class="container">
+        ${breadcrumbs}
+        ${body_content}
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="${root_path}index.html" class="logo" aria-label="FirmFlow Automation Home">
+            <div class="logo-mark" aria-hidden="true">
+              <img class="logo-image" src="${logo_path}" alt="" />
+            </div>
+            <span class="logo-text">FirmFlow <span>Automation</span></span>
+          </a>
+          <p>Legal automation software built exclusively for law firms. We eliminate manual paperwork so attorneys can focus on clients.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="${root_path}product.html">FirmFlow PBO</a></li>
+            <li><a href="${root_path}pricing.html">Pricing</a></li>
+            <li><a href="${root_path}download.html">Download</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="${root_path}index.html">Home</a></li>
+            <li><a href="${root_path}faq.html">FAQ</a></li>
+            <li><a href="${root_path}contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="${root_path}privacy.html">Privacy Policy</a></li>
+            <li><a href="${root_path}terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 FirmFlow Automation. All rights reserved.</p>
+        <p>Legal automation software built exclusively for law firms.</p>
+        <p>Tech Consult Powered by <a href="https://frostdynamics.com/" target="_blank" rel="noopener noreferrer">Frost Dynamics</a> 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+${schema_json}
+  </script>
+  <script src="${js_path}"></script>
+</body>
+</html>

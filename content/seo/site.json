@@ -1,0 +1,31 @@
+{
+  "site_name": "FirmFlow Automation",
+  "brand_name": "FirmFlow",
+  "base_url": "https://www.firmflowautomation.com",
+  "default_disclaimer": "This page is provided for workflow education and product information only. It is not legal advice. Forms commonly used, filing packets, and local court requirements may vary by county and may change over time. Firms should verify current court and local filing requirements before filing.",
+  "organization": {
+    "name": "FirmFlow Automation",
+    "url": "https://www.firmflowautomation.com",
+    "logo": "https://www.firmflowautomation.com/assets/brand/firmflow-logo-v2.png"
+  },
+  "product": {
+    "name": "FirmFlow PBO",
+    "description": "Desktop software that helps California surrogacy law firms package parentage order filings.",
+    "counties_supported": [
+      "Orange County",
+      "Los Angeles County",
+      "San Diego County",
+      "Stanislaus County"
+    ]
+  },
+  "existing_pages": [
+    "/index.html",
+    "/product.html",
+    "/pricing.html",
+    "/download.html",
+    "/faq.html",
+    "/contact.html",
+    "/privacy.html",
+    "/terms.html"
+  ]
+}

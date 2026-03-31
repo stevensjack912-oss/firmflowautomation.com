@@ -1,0 +1,64 @@
+[
+  {
+    "id": "fl-235",
+    "form_name": "Stipulation for Judgment",
+    "form_number": "FL-235",
+    "form_slug": "fl-235",
+    "keyword": "FL-235 surrogacy workflow",
+    "search_intent": "form research",
+    "intro_summary": "FL-235 is one of the California family law forms that may appear in parentage-related workflow discussions, depending on the filing context. For firms handling surrogacy matters, understanding where a form often fits in the packet can make review and assembly more consistent.",
+    "short_answer": "FL-235 is commonly discussed as part of California family law filing workflows, and firms may review it alongside related parentage order forms when preparing a filing packet. Whether it is included in a specific matter may vary by workflow and county practice.",
+    "workflow_context": "In a structured parentage order workflow, firms often map each form to a specific review step so staff can understand what is commonly prepared, what may require attorney review, and what should be verified against current local filing expectations.",
+    "county_notes": [
+      "Whether FL-235 is included in a specific packet may vary by county and matter.",
+      "Teams often benefit from a standardized internal checklist showing how FL-235 relates to nearby forms in the workflow."
+    ],
+    "faq_items": [
+      {
+        "question": "Is FL-235 used in every California parentage order filing?",
+        "answer": "Not necessarily. Form usage may vary by matter and county, so firms should confirm whether FL-235 is appropriate for the filing they are preparing."
+      },
+      {
+        "question": "Why build a page around a single form?",
+        "answer": "Form-focused pages help legal teams understand how a specific form commonly fits into a broader workflow and support searchers who are looking for one document in particular."
+      }
+    ],
+    "related_forms": [
+      "fl-200"
+    ],
+    "related_counties": [
+      "orange-county"
+    ]
+  },
+  {
+    "id": "fl-200",
+    "form_name": "Petition to Establish Parental Relationship",
+    "form_number": "FL-200",
+    "form_slug": "fl-200",
+    "keyword": "Los Angeles County FL-200 parentage order workflow",
+    "search_intent": "county plus form research",
+    "intro_summary": "FL-200 is commonly associated with California parentage workflows. For law firms managing surrogacy-related packet preparation, FL-200 often serves as an anchor form in the filing set, with supporting forms and local documents assembled around it.",
+    "short_answer": "FL-200 is commonly used in California parentage-related filing workflows and is often one of the key forms reviewed when building a parentage order packet. County-specific filing expectations may still vary, so firms should confirm the full packet before filing.",
+    "workflow_context": "A workflow-oriented approach to FL-200 can help firms standardize intake review, supporting-form selection, and final packet quality control, especially when multiple staff members contribute to one filing.",
+    "county_notes": [
+      "FL-200 is often reviewed together with supporting forms and any county-specific filing materials.",
+      "The surrounding packet may vary by county and by the facts of the matter."
+    ],
+    "faq_items": [
+      {
+        "question": "Is FL-200 enough on its own for a filing?",
+        "answer": "Usually not. Firms often prepare FL-200 as part of a larger packet that may include additional statewide and local forms depending on the matter and county."
+      },
+      {
+        "question": "Why pair FL-200 with Los Angeles County in the sample pages?",
+        "answer": "County-plus-form pages are useful for high-intent searches where a team wants to understand how a specific form may fit into a specific venue’s workflow."
+      }
+    ],
+    "related_forms": [
+      "fl-235"
+    ],
+    "related_counties": [
+      "los-angeles-county"
+    ]
+  }
+]

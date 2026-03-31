@@ -1,0 +1,62 @@
+[
+  {
+    "id": "orange-county",
+    "county": "Orange County",
+    "county_slug": "orange-county",
+    "keyword": "Orange County parentage order forms",
+    "search_intent": "county workflow research",
+    "intro_summary": "Orange County is one of the California counties FirmFlow PBO is designed to support for parentage order workflow preparation. Firms often need a repeatable way to track statewide forms, local forms, and packet assembly steps without relying on manual checklists.",
+    "workflow_context": "For many surrogacy law firms, Orange County parentage order preparation includes a mix of statewide Judicial Council forms and local forms commonly included with county-specific filing packets. The exact set may vary by matter and by current court expectations.",
+    "county_notes": [
+      "Orange County packets commonly include statewide forms together with local filing documents.",
+      "Local form usage may vary by matter type, filing method, and current court expectations.",
+      "Firms should verify current Orange County Superior Court filing requirements before submission."
+    ],
+    "faq_items": [
+      {
+        "question": "Does this page list every form that might be used in Orange County?",
+        "answer": "No. This page is meant to summarize forms and workflow context commonly associated with Orange County parentage order packet preparation. Exact filing requirements may vary by county practice and by matter."
+      },
+      {
+        "question": "Can FirmFlow PBO replace filing review by legal staff?",
+        "answer": "No. Workflow automation can help teams organize packet preparation, but firms should still review completed filings and verify county-specific requirements before filing."
+      }
+    ],
+    "related_forms": [
+      "fl-235"
+    ],
+    "related_counties": [
+      "los-angeles-county"
+    ]
+  },
+  {
+    "id": "los-angeles-county",
+    "county": "Los Angeles County",
+    "county_slug": "los-angeles-county",
+    "keyword": "Los Angeles County parentage order forms",
+    "search_intent": "county workflow research",
+    "intro_summary": "Los Angeles County is another major California venue where surrogacy law firms often need a clear, repeatable parentage order workflow. Teams commonly track both statewide forms and county-specific materials when preparing filing packets.",
+    "workflow_context": "A Los Angeles County parentage order workflow often involves a base set of statewide Judicial Council forms plus local court documents that may be included depending on the filing context and current county practice.",
+    "county_notes": [
+      "Los Angeles County filings may include local forms alongside statewide forms commonly used in parentage workflows.",
+      "Form sets and filing expectations may vary by case posture and current local practice.",
+      "Firms should verify current Los Angeles County filing requirements before filing."
+    ],
+    "faq_items": [
+      {
+        "question": "Why combine county and form guidance on one page?",
+        "answer": "County-plus-form pages can help legal teams quickly understand where a specific form may fit into a broader filing workflow while still reminding readers that local requirements should be verified."
+      },
+      {
+        "question": "Does county support mean every filing scenario is identical?",
+        "answer": "No. Support means the workflow is designed around common filing patterns for that county, not that every matter will use the same packet or procedural path."
+      }
+    ],
+    "related_forms": [
+      "fl-200"
+    ],
+    "related_counties": [
+      "orange-county"
+    ]
+  }
+]
