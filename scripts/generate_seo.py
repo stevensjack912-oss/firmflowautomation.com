@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Phase 1 pSEO/AEO pages for the static FirmFlow site."""
+"""Generate pSEO/AEO pages for the static FirmFlow site."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ import json
 from html import escape
 from pathlib import Path
 from string import Template
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,6 +29,21 @@ def rel_prefix(depth: int) -> str:
 
 def asset_path(root_path: str, name: str) -> str:
     return f"{root_path}{name}"
+
+
+def absolute_url(base_url: str, path: str) -> str:
+    return f"{base_url}{path}"
+
+
+def page_depth(slug: str) -> int:
+    return len(Path(slug).parts)
+
+
+def form_display_name(form: Dict[str, object], include_name: bool = True) -> str:
+    form_name = str(form.get("form_name", "")).strip()
+    if include_name and form_name:
+        return f"{form['form_number']} {form_name}"
+    return str(form["form_number"])
 
 
 def escape_list(items: List[str]) -> str:
@@ -73,13 +88,10 @@ def render_breadcrumbs(crumbs: List[Dict[str, str]]) -> str:
 def render_related_items(links: List[Dict[str, str]]) -> str:
     cards = []
     for link in links:
-        title = escape(link["title"])
-        body = escape(link["body"])
-        href = escape(link["href"], quote=True)
         cards.append(
             "<article class=\"card seo-related-card\">"
-            f"<h3><a href=\"{href}\">{title}</a></h3>"
-            f"<p>{body}</p>"
+            f"<h3><a href=\"{escape(link['href'], quote=True)}\">{escape(link['title'])}</a></h3>"
+            f"<p>{escape(link['body'])}</p>"
             "</article>"
         )
     return "".join(cards)
@@ -100,12 +112,10 @@ def render_feature_cards(items: List[Dict[str, str]], card_class: str = "card") 
 def render_bullet_columns(columns: List[Dict[str, object]]) -> str:
     blocks = []
     for column in columns:
-        title = escape(column["title"])
-        items = escape_list(column["items"])
         blocks.append(
             "<article class=\"seo-note-card\">"
-            f"<h3>{title}</h3>"
-            f"<ul class=\"seo-link-list\">{items}</ul>"
+            f"<h3>{escape(column['title'])}</h3>"
+            f"<ul class=\"seo-link-list\">{escape_list(column['items'])}</ul>"
             "</article>"
         )
     return "".join(blocks)
@@ -123,6 +133,20 @@ def render_definition_split(primary_title: str, primary_body: str, secondary_tit
         f"<p>{escape(secondary_body)}</p>"
         "</article>"
         "</div>"
+    )
+
+
+def render_section(section_label: str, heading: str, intro: str, inner_html: str, extra_class: str = "") -> str:
+    class_suffix = f" seo-section-block {extra_class}".rstrip()
+    return (
+        f"<section class=\"seo-content-block fade-up{class_suffix}\">"
+        "<div class=\"section-header\">"
+        f"<span class=\"section-label\">{escape(section_label)}</span>"
+        f"<h2>{escape(heading)}</h2>"
+        f"<p>{escape(intro)}</p>"
+        "</div>"
+        f"{inner_html}"
+        "</section>"
     )
 
 
@@ -176,26 +200,48 @@ def build_schema(context: Dict[str, object]) -> str:
     return json.dumps(schema, indent=2)
 
 
-def page_depth(slug: str) -> int:
-    return len(Path(slug).parts)
+def build_page_lookup(
+    pages: List[Dict[str, object]],
+) -> Tuple[Dict[str, Dict[str, object]], Dict[str, Dict[str, object]], Dict[str, Dict[str, object]], Dict[Tuple[str, str], Dict[str, object]]]:
+    county_pages = {}
+    form_pages = {}
+    workflow_pages = {}
+    county_form_pages = {}
+    for page in pages:
+        page_type = page["page_type"]
+        if page_type == "county":
+            county_pages[page["county_id"]] = page
+        elif page_type == "form":
+            form_pages[page["form_id"]] = page
+        elif page_type == "workflow":
+            workflow_pages[page["workflow_id"]] = page
+        elif page_type == "county_form":
+            county_form_pages[(page["county_id"], page["form_id"])] = page
+    return county_pages, form_pages, workflow_pages, county_form_pages
 
 
-def absolute_url(base_url: str, path: str) -> str:
-    return f"{base_url}{path}"
+def county_link(page: Dict[str, object], county: Dict[str, object], root_path: str, body: str) -> Dict[str, str]:
+    return {
+        "title": f"{county['county']} Parentage Order Workflow Guide",
+        "href": f"{root_path}{page['slug']}/",
+        "body": body,
+    }
 
 
-def render_section(section_label: str, heading: str, intro: str, inner_html: str, extra_class: str = "") -> str:
-    class_suffix = f" seo-section-block {extra_class}".rstrip()
-    return (
-        f"<section class=\"seo-content-block fade-up{class_suffix}\">"
-        "<div class=\"section-header\">"
-        f"<span class=\"section-label\">{escape(section_label)}</span>"
-        f"<h2>{escape(heading)}</h2>"
-        f"<p>{escape(intro)}</p>"
-        "</div>"
-        f"{inner_html}"
-        "</section>"
-    )
+def form_link(page: Dict[str, object], form: Dict[str, object], root_path: str, body: str) -> Dict[str, str]:
+    return {
+        "title": f"{form['form_number']} in California Parentage Order Workflows",
+        "href": f"{root_path}{page['slug']}/",
+        "body": body,
+    }
+
+
+def workflow_link(page: Dict[str, object], workflow: Dict[str, object], root_path: str, body: str) -> Dict[str, str]:
+    return {
+        "title": workflow["h1"],
+        "href": f"{root_path}{page['slug']}/",
+        "body": body,
+    }
 
 
 def build_page_context(
@@ -204,6 +250,10 @@ def build_page_context(
     forms: Dict[str, Dict[str, object]],
     workflows: Dict[str, Dict[str, object]],
     page: Dict[str, object],
+    county_pages: Dict[str, Dict[str, object]],
+    form_pages: Dict[str, Dict[str, object]],
+    workflow_pages: Dict[str, Dict[str, object]],
+    county_form_pages: Dict[Tuple[str, str], Dict[str, object]],
 ) -> Dict[str, object]:
     depth = page_depth(page["slug"])
     root_path = rel_prefix(depth)
@@ -227,18 +277,28 @@ def build_page_context(
 
     if page_type == "county":
         county = counties[page["county_id"]]
-        related_links = [
-            {
-                "title": "FL-235 in California Parentage Order Workflows",
-                "href": f"{root_path}forms/fl-235/",
-                "body": "A form-specific explainer focused on where one statewide form may fit into a broader packet.",
-            },
-            {
-                "title": "California Parentage Order Workflow",
-                "href": f"{root_path}workflows/california-parentage-order-workflow/",
-                "body": "A staged workflow view covering intake, form prep, county review, and final assembly.",
-            },
-        ]
+        related_links = []
+        for form_id in county.get("related_forms", [])[:2]:
+            if form_id in form_pages:
+                related_links.append(
+                    form_link(
+                        form_pages[form_id],
+                        forms[form_id],
+                        root_path,
+                        "A form-focused explainer showing where a specific statewide document may fit into the broader packet.",
+                    )
+                )
+        if "california-parentage-order-workflow" in workflow_pages:
+            related_links.append(
+                workflow_link(
+                    workflow_pages["california-parentage-order-workflow"],
+                    workflows["california-parentage-order-workflow"],
+                    root_path,
+                    "A staged workflow view covering intake, form prep, county review, and final assembly.",
+                )
+            )
+        related_links = related_links[:3]
+
         breadcrumbs = [
             {"label": "Home", "href": f"{root_path}index.html", "absolute_url": site["base_url"] + "/index.html"},
             {"label": "Counties", "href": f"{root_path}product.html", "absolute_url": site["base_url"] + "/product.html"},
@@ -251,14 +311,23 @@ def build_page_context(
             county["page_angle"],
             f"<div class=\"seo-feature-grid\">{render_feature_cards(county['common_packet_components'], 'seo-feature-card')}</div>",
         )
+
+        split_columns = [
+            {"title": "Who usually uses this page", "items": county["team_roles"]}
+        ]
+        if county.get("local_forms"):
+            split_columns.append({"title": "County-specific forms firms may track", "items": county["local_forms"]})
+
         variation_section = render_section(
             "Where Variation Shows Up",
             f"{county['county']} review points",
             "County pages are most useful when they call out where firms typically pause to verify the packet instead of pretending every matter follows one fixed recipe.",
-            f"<div class=\"seo-split-grid\">"
-            f"{render_feature_cards(county['variation_points'], 'seo-note-card')}"
-            f"{render_bullet_columns([{'title': 'Who usually uses this page', 'items': county['team_roles']}])}"
-            f"</div>",
+            (
+                f"<div class=\"seo-split-grid\">"
+                f"{render_feature_cards(county['variation_points'], 'seo-note-card')}"
+                f"{render_bullet_columns(split_columns)}"
+                "</div>"
+            ),
         )
 
         context.update(
@@ -287,42 +356,55 @@ def build_page_context(
 
     elif page_type == "form":
         form = forms[page["form_id"]]
-        form_display_name = f"{form['form_number']} {form['form_name']}"
-        related_links = [
-            {
-                "title": "Orange County Parentage Order Workflow Guide",
-                "href": f"{root_path}counties/orange-county/",
-                "body": "A county-focused guide showing how one supported venue can be organized at the packet level.",
-            },
-            {
-                "title": "California Parentage Order Workflow",
-                "href": f"{root_path}workflows/california-parentage-order-workflow/",
-                "body": "A workflow-level explainer that shows where single-form review fits into the larger process.",
-            },
-        ]
+        form_name_long = form_display_name(form, include_name=True)
+        form_short = form_display_name(form, include_name=False)
+        related_links = []
+        for county_id in form.get("related_counties", [])[:2]:
+            if county_id in county_pages:
+                related_links.append(
+                    county_link(
+                        county_pages[county_id],
+                        counties[county_id],
+                        root_path,
+                        "A county-focused guide showing how one supported venue can be organized at the packet level.",
+                    )
+                )
+        if "california-parentage-order-workflow" in workflow_pages:
+            related_links.append(
+                workflow_link(
+                    workflow_pages["california-parentage-order-workflow"],
+                    workflows["california-parentage-order-workflow"],
+                    root_path,
+                    "A workflow-level explainer that shows where single-form review fits into the larger process.",
+                )
+            )
+        related_links = related_links[:3]
+
         breadcrumbs = [
             {"label": "Home", "href": f"{root_path}index.html", "absolute_url": site["base_url"] + "/index.html"},
             {"label": "Forms", "href": f"{root_path}product.html", "absolute_url": site["base_url"] + "/product.html"},
-            {"label": form["form_number"], "href": "", "absolute_url": context["canonical_url"]},
+            {"label": form_short, "href": "", "absolute_url": context["canonical_url"]},
         ]
 
         definition_section = render_section(
             "Form Role",
-            f"How teams commonly think about {form_display_name}",
+            f"How teams commonly think about {form_name_long}",
             "Form pages work best when they explain where the document fits operationally, not when they try to stand in for official form instructions.",
             render_definition_split("Definition", form["definition"], "Operational role", form["operational_role"]),
         )
         checkpoints_section = render_section(
             "Review Checkpoints",
-            f"Where {form_display_name} often gets reviewed",
+            f"Where {form_name_long} often gets reviewed",
             "Many teams use form pages as a practical review map: selection first, then packet relationships, then filing-readiness checks.",
             (
                 f"<div class=\"seo-feature-grid\">{render_feature_cards(form['review_checkpoints'], 'seo-feature-card')}</div>"
-                f"<div class=\"seo-split-grid seo-split-grid-tight\">"
-                f"{render_feature_cards(form['adjacent_forms'], 'seo-note-card')}"
-                "</div>"
+                f"<div class=\"seo-split-grid seo-split-grid-tight\">{render_feature_cards(form['adjacent_forms'], 'seo-note-card')}</div>"
             ),
         )
+
+        about = [form_short, "California surrogacy filing workflow"]
+        if str(form.get("form_name", "")).strip():
+            about.append(str(form["form_name"]))
 
         context.update(
             {
@@ -330,16 +412,16 @@ def build_page_context(
                 "meta_description": page["meta_description"],
                 "h1": page["h1"],
                 "hero_label": "Form Guide",
-                "hero_aria": f"{form['form_number']} guide",
+                "hero_aria": f"{form_short} guide",
                 "hero_intro": form["intro_summary"],
                 "short_answer": form["short_answer"],
                 "workflow_context": form["workflow_context"],
                 "faq_items": form["faq_items"],
-                "faq_heading": f"{form['form_number']} FAQ",
+                "faq_heading": f"{form_short} FAQ",
                 "faq_intro": "These answers are written for workflow education and should not be treated as definitive filing instructions.",
                 "related_heading": "Related form and workflow resources",
                 "related_intro": "Explore the surrounding workflow context and county pages that relate to this form.",
-                "about": [form["form_number"], form["form_name"], "California surrogacy filing workflow"],
+                "about": about,
                 "page_sections": definition_section + checkpoints_section,
             }
         )
@@ -347,18 +429,29 @@ def build_page_context(
 
     elif page_type == "workflow":
         workflow = workflows[page["workflow_id"]]
-        related_links = [
-            {
-                "title": "Orange County Parentage Order Workflow Guide",
-                "href": f"{root_path}counties/orange-county/",
-                "body": "A county-level guide focused on one supported venue and the packet components firms often track there.",
-            },
-            {
-                "title": "Los Angeles County FL-200 Workflow Guide",
-                "href": f"{root_path}counties/los-angeles-county/fl-200/",
-                "body": "A narrower page showing how one form can be discussed inside a county-aware workflow.",
-            },
-        ]
+        related_links = []
+        for county_id in workflow.get("related_counties", [])[:2]:
+            if county_id in county_pages:
+                related_links.append(
+                    county_link(
+                        county_pages[county_id],
+                        counties[county_id],
+                        root_path,
+                        "A county-level guide showing how a supported venue organizes packet planning and county-specific review.",
+                    )
+                )
+        for form_id in workflow.get("related_forms", [])[:1]:
+            if form_id in form_pages:
+                related_links.append(
+                    form_link(
+                        form_pages[form_id],
+                        forms[form_id],
+                        root_path,
+                        "A form page that helps teams connect one document number to the larger workflow.",
+                    )
+                )
+        related_links = related_links[:3]
+
         breadcrumbs = [
             {"label": "Home", "href": f"{root_path}index.html", "absolute_url": site["base_url"] + "/index.html"},
             {"label": "Workflows", "href": f"{root_path}product.html", "absolute_url": site["base_url"] + "/product.html"},
@@ -375,12 +468,7 @@ def build_page_context(
             "Handoffs and Risks",
             "Where workflows usually succeed or break",
             "This is where workflow pages can be more useful than form pages: they can describe how the work moves between people and where review problems usually appear.",
-            (
-                f"<div class=\"seo-split-grid\">"
-                f"{render_feature_cards(workflow['handoff_points'], 'seo-note-card')}"
-                f"{render_feature_cards(workflow['review_risks'], 'seo-note-card')}"
-                f"</div>"
-            ),
+            f"<div class=\"seo-split-grid\">{render_feature_cards(workflow['handoff_points'], 'seo-note-card')}{render_feature_cards(workflow['review_risks'], 'seo-note-card')}</div>",
         )
 
         context.update(
@@ -398,7 +486,7 @@ def build_page_context(
                 "faq_intro": "These answers are designed to make the workflow easy to understand and quote cleanly while staying cautious about local variation.",
                 "related_heading": "Related workflow resources",
                 "related_intro": "Use these links to move from broad workflow education into county-specific and form-specific context.",
-                "about": ["California parentage order workflow", "Surrogacy law firm automation"],
+                "about": [workflow["h1"], "Surrogacy law firm automation"],
                 "page_sections": stages_section + handoff_section,
             }
         )
@@ -407,81 +495,99 @@ def build_page_context(
     else:
         county = counties[page["county_id"]]
         form = forms[page["form_id"]]
-        form_display_name = f"{form['form_number']} {form['form_name']}"
-        related_links = [
-            {
-                "title": f"{county['county']} Parentage Order Workflow Guide",
-                "href": f"{root_path}counties/{county['county_slug']}/",
-                "body": "Step back to the broader county page if you want venue-level workflow context instead of one form-specific angle.",
-            },
-            {
-                "title": "FL-235 in California Parentage Order Workflows",
-                "href": f"{root_path}forms/fl-235/",
-                "body": "Compare this county-plus-form page with a form page that is organized around role and review checkpoints.",
-            },
-        ]
+        form_name_long = form_display_name(form, include_name=True)
+        form_short = form_display_name(form, include_name=False)
+        related_links = []
+        if page["county_id"] in county_pages:
+            related_links.append(
+                county_link(
+                    county_pages[page["county_id"]],
+                    county,
+                    root_path,
+                    "Step back to the broader county page if you want venue-level workflow context instead of one form-specific angle.",
+                )
+            )
+        if page["form_id"] in form_pages:
+            related_links.append(
+                form_link(
+                    form_pages[page["form_id"]],
+                    form,
+                    root_path,
+                    "Compare this county-plus-form page with the broader form page that explains the document’s role in the overall packet.",
+                )
+            )
+        if "california-parentage-order-workflow" in workflow_pages:
+            related_links.append(
+                workflow_link(
+                    workflow_pages["california-parentage-order-workflow"],
+                    workflows["california-parentage-order-workflow"],
+                    root_path,
+                    "A workflow page that shows how county-specific and form-specific review fit into one larger process.",
+                )
+            )
+
         breadcrumbs = [
             {"label": "Home", "href": f"{root_path}index.html", "absolute_url": site["base_url"] + "/index.html"},
             {"label": "Counties", "href": f"{root_path}product.html", "absolute_url": site["base_url"] + "/product.html"},
             {
                 "label": county["county"],
-                "href": f"{root_path}counties/{county['county_slug']}/",
-                "absolute_url": site["base_url"] + f"/counties/{county['county_slug']}/",
+                "href": f"{root_path}{county_pages[page['county_id']]['slug']}/",
+                "absolute_url": site["base_url"] + county_pages[page["county_id"]]["canonical_slug"],
             },
-            {"label": form["form_number"], "href": "", "absolute_url": context["canonical_url"]},
+            {"label": form_short, "href": "", "absolute_url": context["canonical_url"]},
         ]
 
         narrow_section = render_section(
             "Why This Query Matters",
-            f"Why teams search for {county['county']} + {form_display_name}",
+            f"Why teams search for {county['county']} + {form_short}",
             "County-plus-form pages should feel narrower than county pages and more situational than form pages. The goal is to explain the relationship, not repeat both pages in miniature.",
             render_definition_split(
                 "What they usually want to know",
-                f"Searchers looking for {county['county']} and {form_display_name} together are often trying to understand whether that form belongs in the county-specific packet they are building.",
+                f"Searchers looking for {county['county']} and {form_short} together are often trying to understand whether that form belongs in the county-specific packet they are building.",
                 "What this page can answer",
-                f"This page focuses on how {form_display_name} may fit inside a {county['county']} workflow, while still keeping county requirements and matter facts as variables that must be verified.",
+                f"This page focuses on how {form_name_long} may fit inside a {county['county']} workflow, while still keeping county requirements and matter facts as variables that must be verified.",
             ),
         )
         fit_section = render_section(
             "Workflow Fit",
-            f"How {form_display_name} may fit into a {county['county']} packet",
+            f"How {form_name_long} may fit into a {county['county']} packet",
             "This is the useful part of a county-plus-form page: it can show how a specific form sits inside venue-aware packet planning without pretending the page is a filing instruction sheet.",
             (
-                f"<div class=\"seo-feature-grid\">"
-                f"{render_feature_cards(form['review_checkpoints'], 'seo-feature-card')}"
-                "</div>"
-                f"<div class=\"seo-split-grid\">"
-                f"{render_bullet_columns([{'title': 'County-aware reminders', 'items': county['county_notes'] + form['county_notes']}])}"
-                "</div>"
+                f"<div class=\"seo-feature-grid\">{render_feature_cards(form['review_checkpoints'], 'seo-feature-card')}</div>"
+                f"<div class=\"seo-split-grid\">{render_bullet_columns([{'title': 'County-aware reminders', 'items': county['county_notes'] + form['county_notes']}])}</div>"
             ),
         )
 
         faq_items = county["faq_items"][:1] + form["faq_items"][:1]
+        about = [county["county"], form_short, "California parentage order workflow"]
+        if str(form.get("form_name", "")).strip():
+            about.append(str(form["form_name"]))
+
         context.update(
             {
                 "meta_title": page["meta_title"],
                 "meta_description": page["meta_description"],
                 "h1": page["h1"],
                 "hero_label": "County + Form Guide",
-                "hero_aria": f"{county['county']} {form['form_number']} guide",
+                "hero_aria": f"{county['county']} {form_short} guide",
                 "hero_intro": (
-                    f"{form_display_name} is commonly reviewed as part of broader California parentage workflows, "
+                    f"{form_name_long} is commonly reviewed as part of broader California parentage workflows, "
                     f"and legal teams working in {county['county']} often want a cleaner way to understand where it may fit in the packet."
                 ),
                 "short_answer": (
-                    f"In {county['county']}, {form_display_name} may be reviewed as part of a broader parentage order packet. "
+                    f"In {county['county']}, {form_name_long} may be reviewed as part of a broader parentage order packet. "
                     "The exact filing set may vary by county practice and by matter, so firms should verify current requirements before filing."
                 ),
                 "workflow_context": (
-                    f"A county-aware workflow helps teams understand how {form_display_name} may relate to the rest of a {county['county']} filing packet, "
+                    f"A county-aware workflow helps teams understand how {form_name_long} may relate to the rest of a {county['county']} filing packet, "
                     "while still leaving room for matter-specific attorney review."
                 ),
                 "faq_items": faq_items,
-                "faq_heading": f"{county['county']} + {form['form_number']} FAQ",
+                "faq_heading": f"{county['county']} + {form_short} FAQ",
                 "faq_intro": "These answers are intentionally narrow and workflow-focused so they support planning without overstating county procedure.",
                 "related_heading": "Related county and form resources",
                 "related_intro": "Move from this narrow page into the broader county and form views that surround it.",
-                "about": [county["county"], form["form_number"], form["form_name"], "California parentage order workflow"],
+                "about": about,
                 "page_sections": narrow_section + fit_section,
             }
         )
@@ -506,7 +612,6 @@ def build_page_context(
     )
     context["breadcrumbs"] = render_breadcrumbs(breadcrumbs)
     context["breadcrumbs_data"] = breadcrumbs
-    context["template_name"] = template_name
     context["body_content"] = load_template(template_name).substitute(context)
     context["head_meta"] = load_template("partials/head_meta.html").substitute(
         meta_title=context["meta_title"],
@@ -519,7 +624,7 @@ def build_page_context(
     return context
 
 
-def write_page(context: Dict[str, object], slug: str):
+def write_page(context: Dict[str, object], slug: str) -> Path:
     output_path = ROOT / slug / "index.html"
     html = load_template("base.html").substitute(context)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -560,11 +665,22 @@ def main():
     forms = {item["id"]: item for item in load_json(CONTENT_DIR / "forms.json")}
     workflows = {item["id"]: item for item in load_json(CONTENT_DIR / "workflows.json")}
     pages = load_json(CONTENT_DIR / "pages.json")
+    county_pages, form_pages, workflow_pages, county_form_pages = build_page_lookup(pages)
 
     generated = []
     warnings = []
     for page in pages:
-        context = build_page_context(site, counties, forms, workflows, page)
+        context = build_page_context(
+            site,
+            counties,
+            forms,
+            workflows,
+            page,
+            county_pages,
+            form_pages,
+            workflow_pages,
+            county_form_pages,
+        )
         output_path = write_page(context, page["slug"])
         generated.append((page["canonical_slug"], output_path))
         for key in ("meta_title", "meta_description", "h1"):

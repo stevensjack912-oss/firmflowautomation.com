@@ -42,6 +42,11 @@
       "Attorneys may use the county overview as a final verification aid rather than a primary drafting reference.",
       "Legal assistants often benefit from a clear county-specific packet map when preparing filing-ready materials."
     ],
+    "local_forms": [
+      "Orange County L-1120",
+      "Orange County L-2324",
+      "Orange County POS-050"
+    ],
     "faq_items": [
       {
         "question": "Does this page list every form that might be used in Orange County?",
@@ -53,10 +58,12 @@
       }
     ],
     "related_forms": [
-      "fl-235"
+      "fl-235",
+      "fl-210"
     ],
     "related_counties": [
-      "los-angeles-county"
+      "los-angeles-county",
+      "san-diego-county"
     ]
   },
   {
@@ -102,6 +109,10 @@
       "Paralegals frequently use county workflow pages to coordinate statewide forms with county-specific materials.",
       "Legal assistants can use the county page as an assembly map when preparing the final filing set."
     ],
+    "local_forms": [
+      "Los Angeles FAM-020",
+      "Los Angeles FAM-104"
+    ],
     "faq_items": [
       {
         "question": "Why pair county workflow context with legal-tech content?",
@@ -113,9 +124,139 @@
       }
     ],
     "related_forms": [
-      "fl-200"
+      "fl-230",
+      "fl-235"
     ],
     "related_counties": [
+      "orange-county",
+      "san-diego-county"
+    ]
+  },
+  {
+    "id": "san-diego-county",
+    "county": "San Diego County",
+    "county_slug": "san-diego-county",
+    "keyword": "San Diego County parentage order forms",
+    "search_intent": "county workflow research",
+    "intro_summary": "San Diego County parentage order matters often benefit from a workflow that separates statewide form preparation from county-specific packet review. For many firms, that structure makes final filing checks more predictable.",
+    "workflow_context": "A San Diego County workflow often starts with the statewide parentage packet and then adds local documents, filing logistics, and county-specific review steps closer to submission.",
+    "county_notes": [
+      "San Diego County filings may require county-specific documents in addition to statewide forms commonly used in parentage workflows.",
+      "Teams often verify local packet requirements late in the process so the final filing set reflects current expectations.",
+      "Firms should verify current San Diego County filing requirements before filing."
+    ],
+    "page_angle": "San Diego County pages are most useful when they highlight the separation between the core statewide packet and the county-specific review layer that firms often add near the end of preparation.",
+    "common_packet_components": [
+      {
+        "title": "Core packet build",
+        "body": "Many firms assemble the statewide packet first so they can verify the main filing structure before adding county-specific documents."
+      },
+      {
+        "title": "Local review layer",
+        "body": "County forms and filing documents are often tracked as a separate review layer to reduce last-minute confusion."
+      },
+      {
+        "title": "Submission readiness",
+        "body": "Final review typically focuses on making sure the packet order, supporting documents, and filing set all align."
+      }
+    ],
+    "variation_points": [
+      {
+        "title": "County document timing",
+        "body": "Some firms verify San Diego local materials at intake, while others wait until the packet is nearly complete."
+      },
+      {
+        "title": "Packet coordination",
+        "body": "Workflows vary depending on whether the same person handles form preparation and filing assembly or those steps are split across roles."
+      }
+    ],
+    "team_roles": [
+      "Paralegals often use San Diego county pages to track when the local review layer should begin.",
+      "Attorneys may use the page to confirm workflow logic rather than form-by-form detail.",
+      "Legal assistants benefit from a clear understanding of which packet pieces are statewide and which are county-specific."
+    ],
+    "local_forms": [
+      "San Diego D-049"
+    ],
+    "faq_items": [
+      {
+        "question": "Does a San Diego workflow page replace current county instructions?",
+        "answer": "No. It is meant to help firms organize how they prepare the packet, not replace current county guidance or filing review."
+      },
+      {
+        "question": "Why focus on workflow instead of local rules?",
+        "answer": "Because local rules can change, but firms still need a stable way to organize packet preparation and decide when local verification should happen."
+      }
+    ],
+    "related_forms": [
+      "fl-220",
+      "fl-230"
+    ],
+    "related_counties": [
+      "orange-county",
+      "stanislaus-county"
+    ]
+  },
+  {
+    "id": "stanislaus-county",
+    "county": "Stanislaus County",
+    "county_slug": "stanislaus-county",
+    "keyword": "Stanislaus County parentage order forms",
+    "search_intent": "county workflow research",
+    "intro_summary": "Stanislaus County parentage order workflows often reward simple, explicit packet planning. For firms covering multiple venues, a county-specific page helps staff avoid assuming the same packet logic applies everywhere.",
+    "workflow_context": "A Stanislaus County workflow is often organized around the statewide filing set first, with county-specific review added as part of the final packet check rather than treated as an afterthought.",
+    "county_notes": [
+      "Stanislaus County packet expectations may differ from larger venues even when the same statewide forms are involved.",
+      "Teams often use county-specific checklists to avoid carrying over assumptions from other courts.",
+      "Firms should verify current Stanislaus County filing requirements before submission."
+    ],
+    "page_angle": "Stanislaus County pages are most useful when they help multi-county firms reset their assumptions and review the packet on this county’s own terms.",
+    "common_packet_components": [
+      {
+        "title": "Statewide packet baseline",
+        "body": "Teams usually begin with the same statewide packet foundation they use elsewhere, then review how county-specific needs may alter the final set."
+      },
+      {
+        "title": "County-specific check",
+        "body": "A dedicated county check helps prevent teams from reusing a packet built for another venue without verifying local requirements."
+      },
+      {
+        "title": "Final assembly logic",
+        "body": "Many firms use the final assembly pass to confirm that the filing order and support documents still fit the county being filed in."
+      }
+    ],
+    "variation_points": [
+      {
+        "title": "Cross-county assumptions",
+        "body": "Multi-county teams often need a reminder that packet habits from Orange or Los Angeles may not map cleanly to Stanislaus."
+      },
+      {
+        "title": "Verification timing",
+        "body": "Some firms verify Stanislaus-specific requirements only after the statewide packet is complete to avoid duplicating work."
+      }
+    ],
+    "team_roles": [
+      "Paralegals often use a Stanislaus page to keep county-specific checks separate from statewide form prep.",
+      "Attorneys may use the page as a quick review of workflow assumptions before filing.",
+      "Legal assistants benefit from knowing which assembly steps are stable and which require county verification."
+    ],
+    "local_forms": [],
+    "faq_items": [
+      {
+        "question": "Why have a separate page for Stanislaus County?",
+        "answer": "Because firms handling multiple counties often need a venue-specific workflow reference, even when much of the statewide packet looks familiar."
+      },
+      {
+        "question": "Does this page tell firms exactly what to file?",
+        "answer": "No. It is a workflow page designed to help teams organize preparation and know where county verification should happen."
+      }
+    ],
+    "related_forms": [
+      "fl-240",
+      "fl-230"
+    ],
+    "related_counties": [
+      "san-diego-county",
       "orange-county"
     ]
   }

@@ -66,11 +66,90 @@
     ],
     "related_forms": [
       "fl-235",
-      "fl-200"
+      "fl-210",
+      "fl-240"
     ],
     "related_counties": [
       "orange-county",
-      "los-angeles-county"
+      "los-angeles-county",
+      "san-diego-county"
+    ]
+  },
+  {
+    "id": "california-surrogacy-filing-workflow",
+    "slug": "california-surrogacy-filing-workflow",
+    "keyword": "California surrogacy filing workflow",
+    "search_intent": "workflow explainer",
+    "title": "California Surrogacy Filing Workflow | FirmFlow Automation",
+    "meta_title": "California Surrogacy Filing Workflow for Law Firms | FirmFlow",
+    "meta_description": "A workflow-oriented overview of how surrogacy law firms commonly organize California filing preparation, packet assembly, and county-specific review.",
+    "h1": "California Surrogacy Filing Workflow",
+    "short_answer": "A California surrogacy filing workflow often starts with intake and matter framing, moves through statewide packet preparation, adds county-specific review, and ends with a filing-ready assembly pass. Exact filing requirements may vary by county and matter.",
+    "intro_summary": "Surrogacy law firms often need a workflow that is broader than any one form number. The work usually spans intake, packet planning, county-specific review, and coordination between attorneys, paralegals, and legal assistants.",
+    "workflow_context": "A strong surrogacy filing workflow helps firms decide which packet components belong to the statewide foundation, when county-specific materials should be reviewed, and where final quality control needs to happen before filing.",
+    "county_notes": [
+      "County-specific materials may enter the workflow at different points depending on the firm’s process.",
+      "The final packet may vary by county, matter facts, and current filing expectations.",
+      "Firms should verify current court and local filing requirements before submission."
+    ],
+    "stages": [
+      {
+        "title": "1. Intake and matter framing",
+        "body": "Teams often begin by confirming the matter structure, collecting core details, and identifying what the eventual filing packet may need to include."
+      },
+      {
+        "title": "2. Statewide packet planning",
+        "body": "Once the matter is framed, legal staff often outline the core statewide forms that commonly support the filing."
+      },
+      {
+        "title": "3. County-specific review",
+        "body": "Firms then review what local forms, cover documents, or filing logistics may need to be layered onto the packet."
+      },
+      {
+        "title": "4. Assembly and filing readiness",
+        "body": "The final stage usually focuses on packet order, consistency across forms, and whether the filing set is ready for submission."
+      }
+    ],
+    "handoff_points": [
+      {
+        "title": "Matter setup to drafting",
+        "body": "A clear surrogacy workflow helps the drafting team know which details are settled and which still depend on legal review."
+      },
+      {
+        "title": "Drafting to packet assembly",
+        "body": "The handoff into final assembly is smoother when the statewide packet and county-specific layer are already separated."
+      }
+    ],
+    "review_risks": [
+      {
+        "title": "County assumptions",
+        "body": "Teams can lose time when they assume the same county-specific materials apply across venues without a structured review step."
+      },
+      {
+        "title": "Late-stage packet changes",
+        "body": "When county verification happens too late, firms often need to reopen earlier packet work to keep the filing set aligned."
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "How is a surrogacy filing workflow different from a single-form page?",
+        "answer": "A workflow page explains how the full filing process is commonly organized across forms, people, and county checks rather than focusing on one document number."
+      },
+      {
+        "question": "Does this page give legal advice about surrogacy filings?",
+        "answer": "No. It is a workflow education page intended to help firms think about process, not to replace legal judgment or current court instructions."
+      }
+    ],
+    "related_forms": [
+      "fl-210",
+      "fl-230",
+      "fl-235"
+    ],
+    "related_counties": [
+      "orange-county",
+      "los-angeles-county",
+      "san-diego-county",
+      "stanislaus-county"
     ]
   }
 ]
