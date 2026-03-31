@@ -74,6 +74,8 @@
     ],
     "definition": "FL-210 is best treated as one step inside a broader parentage order packet, not as a stand-alone filing strategy. That makes workflow placement more useful than isolated form discussion.",
     "operational_role": "Legal teams often use FL-210 review checkpoints to coordinate attorney input, supporting-form prep, and final packet consistency.",
+    "role_intro": "FL-210 pages are most useful when they explain the staff question behind the form: when it enters the packet, who usually reviews it, and what needs to stay aligned around it.",
+    "checkpoints_intro": "For FL-210, the review sequence usually matters as much as the form itself. Teams often want a simple map of what gets checked first, what gets checked alongside it, and what waits for county verification.",
     "review_checkpoints": [
       {
         "title": "Packet inclusion check",
@@ -133,6 +135,8 @@
     ],
     "definition": "FL-220 is most useful to discuss in workflow terms because the operational question is usually when it gets prepared and checked, not just what the form number is.",
     "operational_role": "Teams often use FL-220 checkpoints to keep packet preparation coordinated across multiple staff members and avoid late-stage inconsistencies.",
+    "role_intro": "FL-220 tends to make more sense when framed as a workflow checkpoint instead of a stand-alone document reference.",
+    "checkpoints_intro": "Teams often use FL-220 pages to decide when the form should be touched, what it should be reviewed with, and how it fits into the county-aware version of the packet.",
     "review_checkpoints": [
       {
         "title": "Workflow placement",
@@ -192,6 +196,8 @@
     ],
     "definition": "FL-230 is best treated as part of a packet sequence. That makes workflow placement and review timing more useful than a generic form-only description.",
     "operational_role": "Teams often use FL-230 review steps to keep form coordination, attorney review, and final packet assembly moving in the right order.",
+    "role_intro": "FL-230 pages are most helpful when they explain sequence and packet logic rather than trying to treat the form as a self-contained filing event.",
+    "checkpoints_intro": "For many firms, FL-230 is less about isolated preparation and more about how the form interacts with the neighboring documents and the final assembly order.",
     "review_checkpoints": [
       {
         "title": "Initial packet mapping",
@@ -251,6 +257,8 @@
     ],
     "definition": "FL-235 is best understood as a form-specific workflow touchpoint rather than as a complete filing strategy on its own. For many teams, the operational question is where FL-235 belongs in review and assembly, not just what the form is called.",
     "operational_role": "When a firm uses FL-235, it is often easier to manage if the form is tied to a clearly defined review stage with adjacent documents and responsibility checkpoints.",
+    "role_intro": "Because FL-235 is often searched by form number, the most useful explanation is usually operational: where it fits in packet prep and why a team would isolate it for review.",
+    "checkpoints_intro": "FL-235 review tends to work best when firms know exactly where it enters the packet, what it should be compared against, and when county-specific verification still has to happen.",
     "review_checkpoints": [
       {
         "title": "Form selection",
@@ -310,6 +318,8 @@
     ],
     "definition": "FL-240 is usually easier to work with when it is treated as part of packet sequencing and quality control rather than as an isolated document reference.",
     "operational_role": "Teams often use FL-240 review to coordinate packet order, supporting-form consistency, and the handoff from drafting to final assembly.",
+    "role_intro": "FL-240 pages are most useful when they help firms place the form inside the later stages of packet preparation rather than treating it as a first-step document.",
+    "checkpoints_intro": "For FL-240, the practical workflow question is usually how late in the process the form gets reviewed and what still needs to be checked before the packet is final.",
     "review_checkpoints": [
       {
         "title": "Sequence planning",

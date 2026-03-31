@@ -321,7 +321,10 @@ def build_page_context(
         variation_section = render_section(
             "Where Variation Shows Up",
             f"{county['county']} review points",
-            "County pages are most useful when they call out where firms typically pause to verify the packet instead of pretending every matter follows one fixed recipe.",
+            county.get(
+                "variation_intro",
+                "County pages are most useful when they call out where firms typically pause to verify the packet instead of pretending every matter follows one fixed recipe.",
+            ),
             (
                 f"<div class=\"seo-split-grid\">"
                 f"{render_feature_cards(county['variation_points'], 'seo-note-card')}"
@@ -389,13 +392,19 @@ def build_page_context(
         definition_section = render_section(
             "Form Role",
             f"How teams commonly think about {form_name_long}",
-            "Form pages work best when they explain where the document fits operationally, not when they try to stand in for official form instructions.",
+            form.get(
+                "role_intro",
+                "Form pages work best when they explain where the document fits operationally, not when they try to stand in for official form instructions.",
+            ),
             render_definition_split("Definition", form["definition"], "Operational role", form["operational_role"]),
         )
         checkpoints_section = render_section(
             "Review Checkpoints",
             f"Where {form_name_long} often gets reviewed",
-            "Many teams use form pages as a practical review map: selection first, then packet relationships, then filing-readiness checks.",
+            form.get(
+                "checkpoints_intro",
+                "Many teams use form pages as a practical review map: selection first, then packet relationships, then filing-readiness checks.",
+            ),
             (
                 f"<div class=\"seo-feature-grid\">{render_feature_cards(form['review_checkpoints'], 'seo-feature-card')}</div>"
                 f"<div class=\"seo-split-grid seo-split-grid-tight\">{render_feature_cards(form['adjacent_forms'], 'seo-note-card')}</div>"
@@ -461,13 +470,19 @@ def build_page_context(
         stages_section = render_section(
             "Workflow Stages",
             "A staged view of the process",
-            "Workflow pages should do one thing clearly: show the sequence firms commonly use to move from intake to filing-ready packet review.",
+            workflow.get(
+                "stages_intro",
+                "Workflow pages should do one thing clearly: show the sequence firms commonly use to move from intake to filing-ready packet review.",
+            ),
             f"<div class=\"seo-feature-grid\">{render_feature_cards(workflow['stages'], 'seo-feature-card')}</div>",
         )
         handoff_section = render_section(
             "Handoffs and Risks",
             "Where workflows usually succeed or break",
-            "This is where workflow pages can be more useful than form pages: they can describe how the work moves between people and where review problems usually appear.",
+            workflow.get(
+                "handoffs_intro",
+                "This is where workflow pages can be more useful than form pages: they can describe how the work moves between people and where review problems usually appear.",
+            ),
             f"<div class=\"seo-split-grid\">{render_feature_cards(workflow['handoff_points'], 'seo-note-card')}{render_feature_cards(workflow['review_risks'], 'seo-note-card')}</div>",
         )
 

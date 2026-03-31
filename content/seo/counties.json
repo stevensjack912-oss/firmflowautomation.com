@@ -13,6 +13,7 @@
       "Firms should verify current Orange County Superior Court filing requirements before submission."
     ],
     "page_angle": "County pages work best when they help legal staff think in terms of packet structure and review checkpoints rather than trying to publish a universal county checklist.",
+    "variation_intro": "Orange County teams often get the most value from a page that shows where the packet tends to branch: what stays stable across matters and what gets verified closer to filing.",
     "common_packet_components": [
       {
         "title": "Statewide parentage forms",
@@ -80,6 +81,7 @@
       "Firms should verify current Los Angeles County filing requirements before filing."
     ],
     "page_angle": "Los Angeles County pages are most useful when they explain how teams organize packet planning in a high-volume venue, not when they try to freeze county practice into one fixed checklist.",
+    "variation_intro": "In Los Angeles County, the useful question is usually not whether the packet exists, but where the firm needs flexibility because volume, matter posture, and local practice can shift review timing.",
     "common_packet_components": [
       {
         "title": "Core statewide forms",
@@ -146,6 +148,7 @@
       "Firms should verify current San Diego County filing requirements before filing."
     ],
     "page_angle": "San Diego County pages are most useful when they highlight the separation between the core statewide packet and the county-specific review layer that firms often add near the end of preparation.",
+    "variation_intro": "San Diego workflows often become clearer when firms separate the stable statewide packet from the local review layer that may change closer to filing.",
     "common_packet_components": [
       {
         "title": "Core packet build",
@@ -211,6 +214,7 @@
       "Firms should verify current Stanislaus County filing requirements before submission."
     ],
     "page_angle": "Stanislaus County pages are most useful when they help multi-county firms reset their assumptions and review the packet on this county’s own terms.",
+    "variation_intro": "For Stanislaus County, the key workflow value is helping multi-county teams slow down long enough to check local assumptions before they treat the packet like a copy of a larger venue.",
     "common_packet_components": [
       {
         "title": "Statewide packet baseline",

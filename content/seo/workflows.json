@@ -16,6 +16,8 @@
       "Local forms and cover documents may differ across supported venues.",
       "Firms should verify current court and local filing requirements before submission."
     ],
+    "stages_intro": "This workflow is most useful when it is understood as a controlled sequence: intake first, packet structure second, county review third, and quality control last.",
+    "handoffs_intro": "The real value of a parentage workflow often shows up at handoff points, where firms either preserve packet consistency or lose it.",
     "stages": [
       {
         "title": "1. Intake normalization",
@@ -92,6 +94,8 @@
       "The final packet may vary by county, matter facts, and current filing expectations.",
       "Firms should verify current court and local filing requirements before submission."
     ],
+    "stages_intro": "Surrogacy workflow pages work best when they show how firms move from matter framing into packet planning without reducing the work to one form or one county.",
+    "handoffs_intro": "For surrogacy matters, workflow breakdowns often happen at role transitions, especially when county-specific review arrives late or the packet changes near filing.",
     "stages": [
       {
         "title": "1. Intake and matter framing",
