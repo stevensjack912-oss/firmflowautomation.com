@@ -1337,6 +1337,68 @@ textarea.form-control {
 .img-placeholder-tall { height: 280px; }
 .img-placeholder-short { height: 200px; }
 
+.product-shot {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+.product-shot-tall {
+  min-height: 320px;
+}
+
+.product-shot-short {
+  min-height: 240px;
+}
+
+.product-shot-composite {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.product-shot-stack {
+  display: grid;
+  gap: 0;
+}
+
+.product-shot-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  background: linear-gradient(180deg, #f8fbff 0%, #edf4ff 100%);
+}
+
+.product-shot-tall .product-shot-image {
+  min-height: 320px;
+}
+
+.product-shot-short .product-shot-image {
+  min-height: 240px;
+}
+
+.product-shot-image-split {
+  max-height: 260px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.product-shot-image-split + .product-shot-image-split {
+  border-top: 1px solid var(--gray-200);
+}
+
+.product-shot-caption {
+  padding: 14px 18px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  border-top: 1px solid var(--gray-200);
+  background: linear-gradient(180deg, rgba(248,250,252,0.88) 0%, rgba(255,255,255,1) 100%);
+}
+
 /* --- Inline check list ----------------------------------- */
 .check-list {
   display: flex;
@@ -1520,6 +1582,7 @@ textarea.form-control {
   .seo-note-card,
   .seo-related-card,
   .resource-card { padding: 24px; }
+  .product-shot-composite { max-width: 100%; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-brand { max-width: 100%; }
   .site-nav { display: none; }
